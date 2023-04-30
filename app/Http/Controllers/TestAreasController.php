@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\TestAreas;
+use App\CustomClasses\Getters\TestAreasGetter;
 
 
 class TestAreasController extends Controller
@@ -64,5 +65,15 @@ class TestAreasController extends Controller
     public function search($area_name)
     {
         return TestAreas::where('area_name', 'ilike', '%'.$area_name.'%')->get();
+    }
+
+    /**
+     * return the areas with polygons
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function polygons()
+    {
+        return TestAreasGetter::polygons();            
     }
 }

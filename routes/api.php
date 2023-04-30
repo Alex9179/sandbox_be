@@ -19,9 +19,14 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// basic test-areas table stuff
 Route::get('/test-areas', [TestAreasController::class, 'index']);
 Route::post('/test-areas', [TestAreasController::class, 'store']);
 Route::get('/test-areas/{id}', [TestAreasController::class, 'show']);
 Route::put('/test-areas/{id}', [TestAreasController::class, 'update']);
 Route::get('/test-areas/search/{area_name}', [TestAreasController::class, 'search']);
 Route::delete('/test-areas/{id}', [TestAreasController::class, 'destroy']);
+
+// GeoJSON api for test-areas
+Route::get('/test-polygons', [TestAreasController::class, 'polygons']);
+
