@@ -2,6 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\TestAreasController;
 
 /*
 |--------------------------------------------------------------------------
@@ -17,3 +18,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::get('/test-areas', [TestAreasController::class, 'index']);
+Route::post('/test-areas', [TestAreasController::class, 'store']);
+Route::get('/test-areas/{id}', [TestAreasController::class, 'show']);
+Route::put('/test-areas/{id}', [TestAreasController::class, 'update']);
+Route::get('/test-areas/search/{area_name}', [TestAreasController::class, 'search']);
+Route::delete('/test-areas/{id}', [TestAreasController::class, 'destroy']);
