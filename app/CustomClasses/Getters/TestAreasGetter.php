@@ -27,14 +27,7 @@ class TestAreasGetter
                                                   'value', floor(random() * 5) + 1
                                               )
                                             ) 
-                                          ),
-                                          'crs', json_build_object(
-                                              'type', 'name',
-                                              'properties', json_build_object(
-                                                  'name', 'EPSG:4326'
-                                              )
-                                          )
-                                        ) json
+                                          )) json
                                       FROM
                                         test_areas a");
 
