@@ -20,16 +20,18 @@ class TestAreasGetter
                                           'features', json_agg(
                                             json_build_object(
                                               'type', 'Feature',
-                                              'geometry', ST_AsGeoJSON(a.geom,4326)::json,
+                                              'geometry', ST_AsGeoJSON(ST_Transform( a.geom, 4326 ),6)::json,
                                               'properties', json_build_object(
                                                   'area_code', a.area_code,
                                                   'area_name', a.area_name,
-                                                  'value', floor(random() * 5) + 1
+                                                  'value', dat.quintile
                                               )
                                             ) 
                                           )) json
                                       FROM
-                                        test_areas a");
+                                        BRIGHTSON_MSOA_BUILDINGS A
+                                        INNER JOIN BRIGHTON_MSOA_POP DAT
+                                        ON A.AREA_CODE = DAT.AREA_CODE");
 
         return $geoJSONFeature[0]->json;
     }
