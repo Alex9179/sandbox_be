@@ -30,3 +30,7 @@ Route::delete('/test-areas/{id}', [TestAreasController::class, 'destroy']);
 // GeoJSON api for test-areas
 Route::get('/test-polygons', [TestAreasController::class, 'polygons']);
 
+Route::get('/test-api', function () {
+    return ['message' => 'Hello'];
+});
+
